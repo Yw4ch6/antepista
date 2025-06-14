@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pista</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      font-size: 1.2rem;
+      font-family: 'Courier New', Courier, monospace;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0b0;
+    }
+  </style>
+</head>
+<body>
+  ¿You want a hint? Click the button. 🌞
+
+  <button onclick="activarPista()">Sí</button>
+
+  <audio id="musica" loop>
+    <source src="Crystal Castles - Vanished.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    function activarPista() {
+      const audio = document.getElementById('musica');
+
+      // Forzar reproducción y continuar redirección siempre
+      try {
+        audio.play().catch(err => {
+          console.warn("Error al reproducir el audio:", err);
+        });
+      } catch (e) {
+        console.warn("Error general:", e);
+      }
+
+      // Redirige luego de 3 segundos sí o sí
+      setTimeout(() => {
+        window.location.href = "https://yw4ch6.github.io/pista/";
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
