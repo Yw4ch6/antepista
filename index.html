@@ -20,25 +20,6 @@
       font-size: 1.8rem;
     }
 
-    .oculto {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    .revelador {
-      position: absolute;
-      width: 200px;
-      height: 80px;
-      bottom: 150px;
-      cursor: pointer;
-    }
-
-    .revelador:hover ~ button {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
     button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -49,7 +30,20 @@
       font-family: 'Courier New', Courier, monospace;
       border-radius: 5px;
       transition: 0.3s;
-      position: relative;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .revelador {
+      position: absolute;
+      width: 200px;
+      height: 60px;
+      bottom: 150px;
+    }
+
+    .revelador:hover + button {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     button:hover {
@@ -61,6 +55,33 @@
   ¿you want a hint? find the button.🌞
 
   <div class="revelador"></div>
-  <button
+  <button onclick="activarPista()">Sí</button>
+
+  <audio id="musica" loop>
+    <source src="Crystal Castles - Vanished.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function activarPista() {
+      const audio = document.getElementById('musica');
+
+      // Intenta reproducir el audio, pero sin detener la redirección si falla
+      audio.play()
+        .then(() => {
+          console.log("Audio reproducido correctamente");
+        })
+        .catch((error) => {
+          console.warn("No se pudo reproducir el audio:", error);
+        })
+        .finally(() => {
+          // Redireccionar pase lo que pase después de 3 segundos
+          setTimeout(() => {
+            window.location.href = "https://yw4ch6.github.io/pista/";
+          }, 3000);
+        });
+    }
+  </script>
+</body>
+</html>
 
 
