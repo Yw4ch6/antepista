@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,28 +11,51 @@
       color: #0f0;
       font-family: 'Courier New', Courier, monospace;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
       text-align: center;
       white-space: pre-line;
-      font-size: 1.5rem;
-      animation: parpadeo 1s steps(2, start) infinite;
+      font-size: 1.8rem;
     }
 
-    @keyframes parpadeo {
-      0% { opacity: 1; }
-      50% { opacity: 0.4; }
-      100% { opacity: 1; }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      font-size: 1.2rem;
+      font-family: 'Courier New', Courier, monospace;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0b0;
     }
   </style>
 </head>
 <body>
-  Ve a "https://yw4ch6.github.io/pista/" por una pista
+  ¿Quieres una pista?
 
-  <audio autoplay loop>
+  <button onclick="activarPista()">Sí</button>
+
+  <audio id="musica" loop>
     <source src="Crystal Castles - Vanished.mp3" type="audio/mpeg">
   </audio>
+
+  <script>
+    function activarPista() {
+      const audio = document.getElementById('musica');
+      audio.play();
+      setTimeout(() => {
+        window.location.href = "https://yw4ch6.github.io/pista/";
+      }, 3000); // redirige después de 3 segundos
+    }
+  </script>
 </body>
 </html>
